@@ -1,11 +1,26 @@
 namespace SpriteKind {
     export const Dryads = SpriteKind.create()
     export const Door = SpriteKind.create()
+    export const Canopy = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherSprite) {
+    controller.moveSprite(Andrew, 0, 0)
+    Andrew.setPosition(180, 55)
+    if (Canopy_time == 0) {
+        Canopy_time += 1
+        DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
+        DOOR.y = 250
+        controller.moveSprite(Andrew)
+    } else {
+        Olivia.sayText("LEAVE. JUST LEAVE", 4000, true)
+        controller.moveSprite(Andrew)
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Door, function (sprite, otherSprite) {
-    scene.cameraShake(8, 1000)
+    scene.cameraShake(2, 500)
     tiles.setCurrentTilemap(tilemap`level2`)
     Olivia.destroy()
+    Andrew.setPosition(160, 120)
     Canopy = sprites.create(img`
         . . . . . f f 7 7 f f . . . . . 
         . . . . f 7 7 7 7 7 7 f . . . . 
@@ -23,7 +38,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Door, function (sprite, otherSpr
         . . e f 9 9 8 9 9 8 6 9 f e . . 
         . . . f f 9 9 9 8 9 6 f f . . . 
         . . . . . f f 6 9 f f . . . . . 
-        `, SpriteKind.Player)
+        `, SpriteKind.Canopy)
+    Canopy.setPosition(180, 55)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherSprite) {
     controller.moveSprite(Andrew, 0, 0)
@@ -47,8 +63,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherS
         controller.moveSprite(Andrew)
     }
 })
-let DOOR: Sprite = null
 let Canopy: Sprite = null
+let DOOR: Sprite = null
+let Canopy_time = 0
 let Olivia: Sprite = null
 let Andrew: Sprite = null
 let Dryad_time_no1 = 0
