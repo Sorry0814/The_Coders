@@ -5,10 +5,10 @@ namespace SpriteKind {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherSprite) {
     controller.moveSprite(Andrew, 0, 0)
-    Andrew.setPosition(159, 55)
+    Andrew.setPosition(160, 55)
     if (Canopy_time == 0) {
         Canopy_time += 1
-        Door2 = sprites.create(assets.image`myImage`, SpriteKind.Door)
+        DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
         DOOR.y = 250
         controller.moveSprite(Andrew)
     } else {
@@ -68,7 +68,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherS
 })
 let Canopy: Sprite = null
 let DOOR: Sprite = null
-let Door2: Sprite = null
 let Canopy_time = 0
 let Olivia: Sprite = null
 let Andrew: Sprite = null
