@@ -8,8 +8,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherS
     Andrew.setPosition(160, 55)
     if (Canopy_time == 0) {
         Canopy_time += 1
-        DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
-        DOOR.y = 250
+        Door2 = sprites.create(assets.image`myImage`, SpriteKind.Door)
+        Door2.y = 250
         controller.moveSprite(Andrew)
     } else {
         Olivia.sayText("LEAVE. JUST LEAVE", 4000, true)
@@ -49,8 +49,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherS
     Andrew.setPosition(55, 62)
     if (Dryad_time_no1 == 0) {
         Dryad_time_no1 += 1
-        DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
-        DOOR.y = 250
+        Door2 = sprites.create(assets.image`myImage0`, SpriteKind.Door)
+        Door2.y = 250
         Olivia.sayText("A human?! HOW COME! I THOUGHT THIS WORLD IS FAIR!!", 4000, true)
         pause(4200)
         Andrew.sayText("Uh...Hi! Im Andrew, Whats your name? And do you know where we are?", 4000, true)
@@ -67,7 +67,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherS
     }
 })
 let Canopy: Sprite = null
-let DOOR: Sprite = null
+let Door2: Sprite = null
 let Canopy_time = 0
 let Olivia: Sprite = null
 let Andrew: Sprite = null
