@@ -5,7 +5,7 @@ namespace SpriteKind {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherSprite) {
     controller.moveSprite(Andrew, 0, 0)
-    Andrew.setPosition(180, 55)
+    Andrew.setPosition(160, 55)
     if (Canopy_time == 0) {
         Canopy_time += 1
         DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
@@ -17,10 +17,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherS
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Door, function (sprite, otherSprite) {
-    scene.cameraShake(2, 500)
     tiles.setCurrentTilemap(tilemap`level2`)
+    scene.cameraShake(2, 500)
     Olivia.destroy()
     Andrew.setPosition(160, 120)
+    controller.moveSprite(Andrew, 0, 0)
+    pause(500)
+    controller.moveSprite(Andrew)
     Canopy = sprites.create(img`
         . . . . . f f 7 7 f f . . . . . 
         . . . . f 7 7 7 7 7 7 f . . . . 
