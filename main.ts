@@ -2,13 +2,14 @@ namespace SpriteKind {
     export const Dryads = SpriteKind.create()
     export const Door = SpriteKind.create()
     export const Canopy = SpriteKind.create()
+    export const Door2 = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherSprite) {
     controller.moveSprite(Andrew, 0, 0)
     Andrew.setPosition(160, 55)
     if (Canopy_time == 0) {
         Canopy_time += 1
-        Door2 = sprites.create(assets.image`myImage`, SpriteKind.Door)
+        Door2 = sprites.create(assets.image`myImage`, SpriteKind.Door2)
         Door2.y = 250
         controller.moveSprite(Andrew)
     } else {
