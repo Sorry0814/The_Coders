@@ -1,31 +1,55 @@
 namespace SpriteKind {
     export const Dryads = SpriteKind.create()
+    export const Door = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Door, function (sprite, otherSprite) {
+    scene.cameraShake(8, 1000)
+    tiles.setCurrentTilemap(tilemap`level2`)
+    Olivia.destroy()
+    Canopy = sprites.create(img`
+        . . . . . f f 7 7 f f . . . . . 
+        . . . . f 7 7 7 7 7 7 f . . . . 
+        . . . f 7 7 7 7 7 7 7 7 f . . . 
+        . . f 7 7 7 7 7 7 7 7 7 7 f . . 
+        . . f 7 7 7 7 7 7 7 7 7 7 f . . 
+        . f 7 7 e 7 7 e e 7 7 e 7 7 f . 
+        . f 7 7 f f e e e e f f 7 7 f . 
+        . f 7 7 f b 7 e e 7 b f 7 7 f . 
+        . f 7 7 e 1 7 e e 7 1 e 7 7 f . 
+        f f 7 7 f e e e e e e f 7 7 f f 
+        f 7 7 f f f e e e e f f f 7 7 f 
+        . f e e f 8 9 6 6 9 8 f e e f . 
+        . . e 4 6 9 8 9 8 6 9 8 4 e . . 
+        . . e f 9 9 8 9 9 8 6 9 f e . . 
+        . . . f f 9 9 9 8 9 6 f f . . . 
+        . . . . . f f 6 9 f f . . . . . 
+        `, SpriteKind.Player)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Dryads, function (sprite, otherSprite) {
     controller.moveSprite(Andrew, 0, 0)
     Andrew.setPosition(55, 62)
     if (Dryad_time_no1 == 0) {
         Dryad_time_no1 += 1
-        Dryad1.sayText("A human?! HOW COME! I THOUGHT THIS WORLD IS FAIR!!", 4000, true)
+        DOOR = sprites.create(assets.image`myImage`, SpriteKind.Door)
+        DOOR.y = 250
+        Olivia.sayText("A human?! HOW COME! I THOUGHT THIS WORLD IS FAIR!!", 4000, true)
         pause(4200)
         Andrew.sayText("Uh...Hi! Im Andrew, Whats your name? And do you know where we are?", 4000, true)
         pause(4200)
-        Dryad1.sayText("I want no business with you. At all. Please leave cruel human.", 4000, true)
+        Olivia.sayText("I want no business with you. At all. Please leave cruel human.", 4000, true)
         pause(4200)
         Andrew.sayText("Perhaps you have mistaken me for someone else-", 2000, true)
         pause(2200)
-        Dryad1.sayText("LEAVE. JUST LEAVE", 4000, true)
+        Olivia.sayText("LEAVE. JUST LEAVE", 4000, true)
         controller.moveSprite(Andrew)
     } else {
-        Dryad1.sayText("LEAVE. JUST LEAVE", 4000, true)
+        Olivia.sayText("LEAVE. JUST LEAVE", 4000, true)
         controller.moveSprite(Andrew)
     }
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    scene.cameraShake(8, 10000)
-    controller.startLightAnimation(light.sparkleAnimation, 1000)
-})
-let Dryad1: Sprite = null
+let DOOR: Sprite = null
+let Canopy: Sprite = null
+let Olivia: Sprite = null
 let Andrew: Sprite = null
 let Dryad_time_no1 = 0
 Dryad_time_no1 = 0
@@ -50,7 +74,7 @@ Andrew = sprites.create(img`
 tiles.setCurrentTilemap(tilemap`level1`)
 Andrew.setPosition(160, 120)
 scene.cameraFollowSprite(Andrew)
-Dryad1 = sprites.create(img`
+Olivia = sprites.create(img`
     . . . . . . e . 5 . . . . . . . 
     . . . . . f e 5 e f f . . . . . 
     . . . . f 1 5 e 5 1 7 f . . . . 
@@ -68,8 +92,6 @@ Dryad1 = sprites.create(img`
     . . . f f f f f f f f f f . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Dryads)
-let DOOR = sprites.create(assets.image`myImage`, SpriteKind.Projectile)
-DOOR.y = 250
 Andrew.sayText("Wha-? How? Oh!", 5000, true)
 pause(5200)
 Andrew.sayText("Hi player! My name is Andrew, and the last thing I remember is going to sleep..", 5000, true)
