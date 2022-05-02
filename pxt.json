@@ -1,5 +1,5 @@
 {
-    "name": "Untitled",
+    "name": "The coders",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -13,7 +13,8 @@
         "tilemap.g.jres",
         "tilemap.g.ts",
         "images.g.jres",
-        "images.g.ts"
+        "images.g.ts",
+        null
     ],
     "testFiles": [
         "test.ts"
