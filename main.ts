@@ -11,6 +11,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Canopy, function (sprite, otherS
         Canopy_time += 1
         Door2 = sprites.create(assets.image`myImage`, SpriteKind.Door2)
         Door2.y = 250
+        Andrew.sayText("Hi-", 400, true)
+        pause(420)
+        Canopy.sayText("Hello, Master Andrew..My name is Canopy.", 4000, true)
         controller.moveSprite(Andrew)
     } else {
         Olivia.sayText("LEAVE. JUST LEAVE", 4000, true)
